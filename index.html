@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java script small projects</title>
+    <script type="text/javascript">
+        //e-2 add two static number
+        let a = 5;        //agr user se lena ho number to a & b main 5 & 6 ki jagha =prompt("Please enter a number", ""); likhain ge
+        let b = 6;
+        var c = a + b;    //user se input string ki form main ati hai r q k hm 2 numbers ko add kr rhe so user ki traf se ane wakli string input ko integer 
+        // main convert krne k liye hm var c = a+b ki jagha var c = parsInt(a) + parseInt(b); likhain ge. r upr bhi 5 & 6 ki jagha prompt lain ge.
+        console.log("The sum of "+a+" and "+b+" is: "+c);
+
+
+        //e-3 find square root of a number
+        var d = 64       //agr user se lain ge to 64 ki bajay ase likhain ge =prompt('Please enter a number', '');  //yahan dekho hmne '' main prompt li hai q k JS main double single dono chalte.
+        var e = Math.sqrt(d);
+        console.log(e);
+
+
+        //e-4 find /calculate area of a triangle  [ans- general formula to calculate is area = (base*height)/2 ]
+        var base = prompt("please enter the base value");
+        var height = prompt("please enter the height value");
+        var area = (base * height)/2;
+        console.log(area);
+        //console.log('Base: '+ base + ' Height: ' + height + 'area: ' +area); agr user ko base & height b dekhani hoto ase likhain ge.
+
+
+        //second way of finding area of a triangle is through heron's formula i.e s=(a+b+c)/2 then squar root of s(s-a)*(s-b)*(s-c)
+        var f = 10;
+        var g = 5;
+        var h = 10;
+        var s = (f+g+h)/2;
+        var temp = s*(s-f)*(s-g)*(s-h);
+        var area2 = Math.sqrt(temp);
+        console.log(area2);
+
+
+        //e-5 swapping 2 numbers using & without using temporary variables.
+        var i = prompt("please enter the value i value");
+        var j = prompt("please enter the value j value");
+        console.log(`The value of i is: ${i}, The value of j is: ${j}`);   //another way of showing var to user on console. yahan hmne ${} use kia taky string r var ko concatinate kr sakain.
+        var temp2;
+        //suppose i=5 & j=6
+        temp2 = i;   // so temp2=5
+        i = j;       // & i = 6
+        j = temp2;   // & j = 5
+        console.log(`After swapping \n The value of i is: ${i},  \n The value of j is: ${j}`);  
+        // my mistake: main ne ye upr wale dono console main bacticks ` ki bajaye '' single qoutes r phr "" double qoutes b use kiye lakin 
+        // console pe as it is ${i}+ ${j} likha arha tha q k single qoutes literally as it is lete string ko instead of a placeholder like ${} placeholder tha yahan. 
+       
+
+        //now without using temporary variable.
+        var k = parseInt(prompt("please enter the value k value"));   //dekho phr se parseInt use kia so to convert string into integers bcs we are adding numbers & strings can not be addded but concatinate.
+        var L = parseInt(prompt("please enter the value L value"));
+        console.log(`The value of k is: ${k}, The value of L is: ${L}`);  
+        //suppose k= 5 & L= 6
+        k = k + L;   // k=5+6=11
+        L = k - L;   // L=11-6= 5
+        k = k - L;   // k=11-5= 6
+        
+        console.log(`After swapping \n The value of k is: ${k},  \n The value of L is: ${L}`);  
+
+
+        //e-6: convert kms to miles.   1 kilometer = 0.621371 meters which is a standard.   so miles = kilometers * factor (0.621371)
+        //first we have to create input in html
+        function convert(){
+            var kms = document.getElementById('data').value;  // yahan pe html se data le rhe hain value ki form main.
+            const factor = 0.621371;   // yahan pe const is liye use kia taky standard factor ki value hmesha yhi  0.621371 rhe.
+            var miles = kms * factor;
+        //  alert(miles);        // ye hm ne check krne k liye shortcut likha tha k Function kam kr rha k ni
+        //  document.getElementById('res').innerText = `${miles} miles`;    //is main ${} use hota + ki jagha jb k neche wala phr is se asan us main + use hota.
+        document.getElementById('res').innerText = miles + ' Miles';   // Miles se phla jo ` backtick hai us main gap hai ok. mera miles screen pe likha ni arha tha is main gap na hone ki wja se.
+        }
+   
+
+
+        // e-7 : convert celsius to fahrenheit.      so formula is fahrenheit = celsius * 1.8 +32
+        function convert2(){
+            var m = document.getElementById('data2').value;
+        //    alert(m);   // shortcut to check
+            var fahrenheit = (m * 1.8) + 32;
+            document.getElementById('res2').innerText = `${m} C = ${fahrenheit} F`;  
+        }
+
+        //e-8 : check if a number is positive, negative or zero.
+        function check(){
+            var value = document.getElementById('data3').value;
+            var res3 = Math.sign(value);
+            document.getElementById('res3').innerText = res3;
+        }
+        //second menthod of doing it is through if-else:
+        function check(){
+            var value = document.getElementById('data4').value;
+            if (value > 0){
+                res4 = `${value} is a positive number`;
+            }
+            else if (value < 0){
+                res4 = `${value} is a negative number`;
+            }
+            else if (value == 0){
+                res4 = `${value} is zero`;
+            }
+            else{
+                res4 = `${value} is a Not A Number`;
+            }
+            document.getElementById('res4').innerText = res4;
+        }
+
+
+        // e-9 generate a random number using Math.random().     {we can also give it a range with library like Math.random()*(highestNumber - lowestNumber) +lowestNumber.
+         // Note: floor method se OTP number bhi generate hoty hain.
+        var n = Math.random();
+          console.log("Before Calculation "+n);
+        //  n = n * (10 - 1) + 1;                             // ye tb likhain ge jb hmain numbers chahiye hn within a range (10-1) ho else agr fixed number chahiye hn to neche wala method us karain ge.
+          n = n * 10000;                                    // ye hm ne is liye use kia taky hmain fixed 4 numbers milain jese k otp main hoty. 'n' koi b floating number hai jo k 10000 se multiply hoga to decimal 4 digits agy chala jay ga r phr floor method se hmain integer value mil jay gi.
+          console.log("After Calculation "+n);               // yahan tk hmain floating or decimal num milain ge jin ko hm phr floor se integer bnay ge.
+          console.log("Floor Calculation "+ Math.floor(n));        //hm ne floor method use kia taky value integer mion convert hoke ay na k float main.
+
+
+        // e-10 check if a number is odd or even. We will do it with 2 methods if-else & ternary operators. 
+        // {hm number ko 2 se divide krain ge r agr remainder 0 aya to num even wrna odd}  
+        // note: qoutient nikalne ka kam '/'' division ka hai jb k remainder nikalne ka kam '%' jis ko hm programatically modulus b khte hain.
+         var o = 9;
+         if(o%2 == 0){
+            //even
+            console.log(`${o} is an even number`);
+         }
+         else{
+            //odd
+            console.log(`${o} is an odd number`);
+         }
+         
+         //with ternary operator:
+         var p = 8;
+         var res4 = p%2 == 0 ? "even" : "odd";
+         console.log(`${p} is an ${res4} number`);
+
+
+
+         // e-11 check if a number is a prime number.
+          var num1 = prompt("Please enter a number");
+         if (num1 == 1){
+            console.log(`${num1} is netheir prime nor composite number`);
+         }
+         else if (num1 < 1){
+            console.log(`${num1} is not a prime number`);
+         }
+         else{   
+            //num1 = 15
+            for(var num2 = 2; num2<num1; s++){
+                if(num1%num2 == 0){
+                    var res5 = `${num2} is not a prime number`;
+                    break;       //loop ruk ni rha tha q k ek number agr 2 se divide ni ho rha to 3,4,5 yani 15 tk kisi r se ho rha tha so hm ne break; is liye lagaya taky jese hi upr wali condition yani "2 se divide hona" met ho to loop ruk jay r result print krwaye.
+                }
+                else{
+                    var res5 = `${num2} is a prime number`;
+                }
+            }
+            console.log(res5);
+         }
+            
+
+         // e- 12 find largest number among three numbers using Math.max method & a user defined method.
+         var q = prompt("plz enter the first number");    // {jb is method ko chalana ho to * hata dena r neche wale pe lga dena.}
+         var r = prompt("plz enter the second number");
+         var s = prompt("plz enter the third number");
+         var t = Math.max(q,r,s);
+         console.log(`${q},${r},${s}: Largest = ${t}`);
+
+         //by using our own method. write the following function just below q,r,s prompts:
+         function check(u,v,w){     //u,v,w are parameters & placeholders for values, that will be passed into the function, when called i.e they are temporary names for the input values of q,r,s. 
+            if(u>=v && u>=w){
+                return u;
+            }else if(v>=u && v>=w){
+              return v;  
+            }else{
+            return w;
+         }
+        }
+         var q = prompt("plz enter the first number");
+         var r = prompt("plz enter the second number");
+         var s = prompt("plz enter the third number");
+         var t = check(a,b,c);            //these values are mapped to the placeholders & the function then does its job using u,v,w names internally.
+         console.log(`${q},${r},${s}: Largest = ${t}`);
+
+
+         // e-13 find factorial of a number.
+         var x = prompt("plz enter a number");
+         var fact = 1;
+         if(x == 0){
+            console.log(`The factorial of ${x} is 1`);
+         }else if(x < 0){
+            console.log(`The factorial of -ve numbers is not possible`);
+         }else{
+            for(var y=1;y<=x;y++){          //yahan akhir main, main ne curly bracket ni lgai thi jis ki wja se console main number wise factorial show ni ho rha tha.
+              fact = fact * y;
+            console.log(`The factorial of ${x} is ${fact}`);  
+            }  
+         }
+        
+
+
+         // e-14  find factorial of a number using recursion.
+         var z = prompt("plz enter a number");
+         var fact2 = 1;
+         console.log(fact2);
+         function fact3(n){
+            if(n>z){
+                return;
+            }
+            var tmp = fact2;
+            fact2 = fact2 * n;
+            console.log(fact2);
+            n++;
+            fact3(n);
+         }
+         fact3(1);
+         console.log(`The fact of ${z} is ${fact2}`);
+
+
+         // e- 27 find factorial of a number using for loop.
+         var num9 = prompt("plz enter a number");
+         for(var i4=1; i4<=num9;i4++){
+         if(num9%i4 == 0){
+         console.log(i4);
+             }
+         }
+
+
+
+
+         // e-15 print table of a user given number, using function.
+         function table(number){             //sirf for loop se b kam hosakta pr function use krne ka faida ye hai k hm optimized coding krte hain mtlb code ek bar kam multiple bar. jb jb neche 5,15 k sath new number add hnge new table ate jayn ge.
+            for(var ab=1;ab<=1;ab++){
+                var res6 = ab*number;
+                console.log(`${number} x ${ab} = ${res6}`);
+            }
+         }
+         table(5);
+         table(15);
+
+
+        // e-16 check armstrong number. Armstrong main hm numbers ki length se hr num ko multiply krte jese 153 ab length 3 hai so hm 1*1*1+5*5*5+3*3*3 krain ge r agr inka ans 153 wapis agya to ye armstrong number hnge wrna ni.
+        var numb5 = prompt("plz enter arm number");
+        var temp3 = numb5;
+        var noOfDigits = numb5.toString().length;
+        var sum = 0;
+        while (temp3>0){
+            console.log(temp3);      // ye neche console.log ---- tk sare console samjhane k liye hain taky console main each step show ho. remove krna hoto kr lena.
+            var digit = temp3%10;   //ye hm ne is liye kia taky hm numbers ko alag kr sakain jese 153 main se hmain 3 phle nikalna hai 
+            console.log(digit);
+            console.log(digit**3);
+       //     sum += digit**3; ye hm tb krain ge jb sirf 3 numbers ko check krna ho warna noOfDigits wala var use karain ge.
+            sum += digit**noOfDigits;
+            console.log("Sum "+sum);
+            temp3  = parseInt(temp3/10);
+            console.log(temp3);
+            console.log('-------');
+        } 
+        if(sum == numb5){
+            console.log(`${numb5} is an armstrong number`);
+        }else{
+            console.log(`${numb5} is not an armstrong number`);
+        }
+
+
+        // e-17 check if numbers have same last digit.
+        var a1 = prompt("plz enter 'a' number");
+        var a2 = prompt("plz enter 'b' number");
+        var a3 = prompt("plz enter 'c' number");
+        var result1 = a%10;
+        var result2 = b%10;
+        var resultc = c%10;
+        if(result1 ===result2 && result3){
+            console.log(`${a1}, ${a2}, ${a3} are having the same last digit`);
+        } else{
+            console.log(`${a1}, ${a2}, ${a3} are not having the same last digit`);
+        }
+
+
+        // e-18 check palindrome (string) using array methods.   {palindrome string: asi string jo forward backward same ho jese dad, madam etc.}
+        var string = prompt("plz enter a string");
+        var stringArray = string.split('');
+        var stringArrayRev = stringArray.reverse();
+        var revString = stringArrayRev.join('');
+        console.log(stringArray);
+        console.log(stringArrayRev);
+        if(string === revString){
+            console.log(`${string}: is a palindrome`);
+        }else{
+            console.log(`${string}: is not a palindrome`);
+        }       
+
+        // e-19 check palindrome using for loop.
+        var string2 = prompt("plz enter a string");
+        var len = string2.length;
+        var msg = 'It is a palindrome';        // hm console main b 2 var le k res print krwa sakte the but hm ne yahan phle se hi assume kr lia hai k var msg ek palidrome hai.
+        for( var i2 = 0; i2<len/2 ; i2++){      //i2=0 is liye rakha q k string ek continous array hoti hai r array hmesha 0 se start hota. aur len/2 is liye q k hm first half string ko check krain r last half bech wala letter same hi rhe ga hmesha hi to usko check krne kki zaroort ni.
+                console.log(string2[i2]);       // ye hm ne first half ka print dekhne k liye lagaya k kese kam kr rha k ni. isko hata sakti ho.
+                if(string2[i2] != string2[len -1 -i2]){    // ye hm ne string ko last se ya akhir se check krne k liye likha.
+                msg =  'It is not a palindrome';
+            }
+        }
+        console.log(`${string2}: ${msg}`);  
+
+
+        // e-20 check the number of occerences of a character in a string using For loop.
+        var string3 = prompt("plz enter a string3");
+        var letter = prompt("plz enter a letter");     // ye hm ne is liye lia taky user btay k usy kis letter ki occerence check krwani hai.
+        let strLen = string3.length;
+      //  alert(strLen);              //ye hm ne string ki length dekhne k liye likha wese hi isk zaroorat ni hai.
+        var counter = 0;
+        for(var i3 = 0; i3 < strLen ;i3++){
+            if(string3[i3] == letter){
+                counter++;
+        //       console.log(counter);         //ye hm ne samjhne k liye likha
+            }
+        }
+        console.log(`${string3} => ${letter} => ${counter}`); // yahan hmne => use kia wo sir khta k kuch b design use kr sakte. so search it. 
+
+
+
+        // e -21 program to check wether a string starts & ends with a certain character.
+        var string4 = prompt("plz enter a string4:");
+        console.log(string4);
+        var testStart = string4.startsWith('W');
+        var testEnd = string4.endsWith('e');
+        if(testStart == true && testEnd == true){
+            console.log(`${string4} starts with W & ends with e`);
+        }else if (testStart == true && testEnd == false){
+            console.log(`${string4} starts with W`);
+        }else if (testStart == false && testEnd == true){
+            console.log(`${string4} ends with e`);
+        }else{
+            console.log(`${string4} ends with e`);
+        }       
+
+
+
+        // e- 22 check wether a string contains a substring. we will use 2 methods here first string.includes & second string.indexOf
+        var string5 = prompt("plz enter a string5:");
+        var subString = "the";           // suppose k ye check krna hai.
+        console.log(string5);
+        var test1 = string5.includes(subString);
+        console.log(test1);
+        var test2 = string5.indexOf(subString);   // indexOf hmain 'the ki starting position deta hai'
+        console.log(test2);                 
+        
+
+        //e -23 convert the first letter of a string into uppercase. [for this we use 3 functions for this charAt(), slice() & toUpperCase().]
+        var string6 = prompt("plz enter a string6:");
+        console.log(string6);
+        var first = string6.charAt(0);
+        console.log(first);
+        console.log(first.toUpperCase());
+        var rem = string6.slice(1);
+        console.log(rem);
+        var caps = first.toUpperCase() + rem;
+        console.log(`Final ${caps}`);                     
+
+
+
+        // e - 24 count the number of vowels in a string using regex. {regex is used to find, test & match characters from a string or regular expressions like @gmail.com, a,e,i,o,u etc.}
+        var string7 = prompt("plz enter a string7:");
+        const reg = /[aeiou]/gi;        //yahan per qoutes ' ka use ni kia q k ye khud ek array hai + 'gi' modifier hai jis ka mtlb hai k / slash k bech main jo b regular expression hai wo match krna hai 'g' globally pory string main dhondna hai r case sensitivity ko 'i' ignore krte hue dhoondna hai.
+        var char5 = string7.match(reg);
+        console.log(char5.join(','));
+        console.log(char5.length);
+
+
+        // e - 25 find armstrong numbers btw interval / range.
+        var ac = prompt("plz enter a lower number");
+        var ad = prompt("plz enter a upper number");
+        for (var i3 = ac;i3<=ad;i3++){
+            var temp6 = i3;
+            var noOfDigits2 = i3.toString().length;
+        var sum3 = 0;
+        while(temp6 > 0){
+            var digit4 = temp6%10;
+            temp6 = parseInt(temp6/10);
+            sum3 += digit4 ** noOfDigits2;
+        }
+        if(sum3 == i3){
+            console.log(i3);
+        }
+    }
+
+
+        
+        // e - 26 find sum of natuaral numbers using recursion. {with recursion we dont use loops but we apply concept of loop with a function}
+        function sum4(num8){
+            if(num8>0){
+                return num8 + sum4(num8-1);
+            }else{
+                return num8;
+            }
+        }
+        var res6 = sum4(10);
+        console.log(res6);
+
+
+        // e-27 is done after e-14 as both were related to each other.
+
+
+        // e-28 program to make a simple calculator using switch case.
+        var num11 = prompt("plz enter a 1st calculator number");
+        var num12 = prompt("plz enter a 2nd calculator number");
+        var opr = prompt("plz select among +,-,*,/");
+                switch(opr){
+            //if(opr == "+")
+            case "+":
+            var res7 = parseInt(num11) + parseInt(num12);
+            console.log(`${num11} + ${num12} = ${res7}`);
+            break;
+            //if(opr == "-")
+            case "-":
+            var res7 = parseInt(num11) - parseInt(num12);
+            console.log(`${num11} - ${num12} = ${res7}`);
+            break;
+            //if(opr == "*")
+            case "*":
+            var res7 = parseInt(num11) * parseInt(num12);
+            console.log(`${num11} * ${num12} = ${res7}`);
+            break;
+            case "/":
+            var res7 = parseInt(num11) / parseInt(num12);
+            console.log(`${num11} / ${num12} = ${res7}`);
+            break;
+        default:
+            console.log(`Invalid operator`);
+        }
+
+
+        // e - 29 print fibonacci sequence. {0,1,1,2,3,5,8,13 mtlb phle dono nums ko add krna phr unke result main agla num add krna & .....}
+        var ae = 0, af = 1;
+        for (var i5=0;i5<=10;i5++){
+            var temp7 = ae + af;        // 0 + 1 = 1
+            console.log(temp7);         
+            ae = af;                    // 0 into 1
+            af = temp7;                 // 1 into 1     so ab next loop ase hi chalta jay ga har new value temp main store hogi r wo phr next num se add ho jay ga.
+        }
+        
+
+
+         // e - 30 replace characters of a string using predefined function i.e replace().
+         var string9 = "Mr. Red has a red car & a red bike";
+         console.log(string9);
+        // var newString = string9.replace('Red','blue');   // q k hm ne capital Red likha hai is liye ye sirf Mr.Red k name ko replce kre ga.
+        // console.log(newString);
+         // with regex method we can do it without case senstivity.
+         var regex = new RegExp('Red','gi');
+         var newString = string9.replace(regex,'blue');  
+         console.log(newString);
+
+
+
+        // e -31 reverse a string using for loop.    {in-built function b lga sakte hain lakin hm apna khud ka logic hi lagain ge}
+        var string10 = prompt("plz enter string10");
+        var strLength = string10.length;
+        var revString2 = '';
+        for (var i6 = strLength-1;i6>=0;i6--){
+            revString2 += string10[i6];
+        }
+        console.log(`${string10} reverse is ${revString2}`);
+
+
+
+        // e -32 sort words in an alphabetical order.  we will use split() & sort() methods.
+        var string11 = prompt("plz enter a last string");
+        var stringArray = string11.split('');
+        stringArray.sort();
+        console.log(string11);
+        console.log(stringArray);
+        console.log(stringArray.join(' '));
+
+
+
+
+
+
+       
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    </script>
+</head>
+<body>
+    <!-- e-6 -->
+     <div>
+    <input type="number" name="" step="any" id="data"/> kms       <!--step = any is liye use kia taky koi b number enter kr sakain e.g decimal -->
+    <button onclick="convert()">Convert</button> miles  <!--hm ne onclick main convert() ka function jis ka name convert k ilawa b rakh sakte, use kia hai taky phr is pe hm JS k ander logic lga sakain -->
+    <h1 id="res"></h1>
+</div>
+
+
+    <!-- e-7 -->
+     <div>
+        <input type="number" name="" id="data2" /> C
+        <br/>
+        <button onclick="convert2()">Convert</button>
+        <h2 id="res2"></h2>
+    </div>
+
+
+    <!-- e-8 -->
+     <div>
+        <input type="" name="" id="data3" /> 
+        <br/>
+        <button onclick="check()">Check</button>
+        <h2 id="res3"></h2>
+     </div>
+
+    <!--second method of it is by if-else -->
+     <div>
+        <input type="" name="" id="data4" /> 
+        <br/>
+        <button onclick="check()">Check</button>
+        <h2 id="res4"></h2>
+     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
